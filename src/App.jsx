@@ -78,7 +78,9 @@ export default function App() {
     const selectedProject = projectState.projects.find(
       (project) => project.id === projectState.selectedProjectID,
     );
-    const selectedProjectTasks=projectState.tasks.filter((task)=>task.projectID==projectState.selectedProjectID)
+    const selectedProjectTasks = projectState.tasks.filter(
+      (task) => task.projectID == projectState.selectedProjectID,
+    );
     content = (
       <SelectedProject
         tasks={selectedProjectTasks}
