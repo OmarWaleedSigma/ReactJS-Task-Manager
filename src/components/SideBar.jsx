@@ -1,6 +1,11 @@
 import Button from "./Button";
 
-export default function SideBar({ onStartAddingProject, projs }) {
+export default function SideBar({
+  onSelectProject,
+  onStartAddingProject,
+  projs,
+  selectedProjectID
+}) {
   return (
     <aside className="w-1/3 bg-stone-900 text-stone-50 px-8 py-16 md:w-72 rounded-r-xl">
       <h2 className="mb-8 uppercase font-bold md:text-xl text-stone-200">
@@ -12,14 +17,20 @@ export default function SideBar({ onStartAddingProject, projs }) {
       <ul className="mt-8">
         {projs.length > 0 ? (
           projs.map((project) => {
+            let classes = "text-left py-1 px-2 my-1 rounded-sm w-full hover:text-stone-200 hover:bg-stone-800"
+            classes += project.id == selectedProjectID ? " text-stone-200 bg-stone-800" : " text-stone-400"
             return (
               <li key={project.id}>
-                <button className="text-left py-1 px-2 my-1 rounded-sm w-full hover:text-stone-200 hover:bg-stone-800 text-stone-400">
+                <button
+                  className= {classes}
+                  onClick={() => onSelectProject(project.id)}
+                >
                   {project.title}
                 </button>
-            </li>
-          );
-        })) : (
+              </li>
+            );
+          })
+        ) : (
           <li className="text-stone-400">No projects available</li>
         )}
       </ul>

@@ -30,7 +30,15 @@ export default function AddNewProject({ onCancel, onSave }) {
 
   return (
     <>
-      <ErrorModal ref={errorModalRef} />
+      <ErrorModal ref={errorModalRef}>
+        <h2 className="font-bold text-stone-700 text-xl my-4">Invalid Input</h2>
+        <p className="text-stone-600 mb-4">
+          Oops...look like you forget to enter a <code>value</code>
+        </p>
+        <p className="text-stone-600 mb-4">
+          Please make sure you enter a valid data for each input
+        </p>
+      </ErrorModal>
       <form onSubmit={handleSave} className="w-140 mt-16">
         <menu className="flex justify-end items-center gap-4 my-4">
           <li>
